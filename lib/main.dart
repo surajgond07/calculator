@@ -122,36 +122,36 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         children: [
                           // unicode symbol
                           // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("7", 1, Colors.black54),
-                          buildButton("8", 1, Colors.black54),
-                          buildButton("9", 1, Colors.black54),
+                          buildButton("7", 1, const Color(0xFF808080)),
+                          buildButton("8", 1, const Color(0xFF808080)),
+                          buildButton("9", 1, const Color(0xFF808080)),
                         ],
                       ),
                       TableRow(
                         children: [
                           // unicode symbol
                           // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("4", 1, Colors.black54),
-                          buildButton("5", 1, Colors.black54),
-                          buildButton("6", 1, Colors.black54),
+                          buildButton("4", 1, const Color(0xFF808080)),
+                          buildButton("5", 1, const Color(0xFF808080)),
+                          buildButton("6", 1, const Color(0xFF808080)),
                         ],
                       ),
                       TableRow(
                         children: [
                           // unicode symbol
                           // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("1", 1, Colors.black54),
-                          buildButton("2", 1, Colors.black54),
-                          buildButton("3", 1, Colors.black54),
+                          buildButton("1", 1, const Color(0xFF808080)),
+                          buildButton("2", 1, const Color(0xFF808080)),
+                          buildButton("3", 1, const Color(0xFF808080)),
                         ],
                       ),
                       TableRow(
                         children: [
                           // unicode symbol
                           // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton(".", 1, Colors.black54),
-                          buildButton("0", 1, Colors.black54),
-                          buildButton("00", 1, Colors.black54),
+                          buildButton(".", 1, const Color(0xFF808080)),
+                          buildButton("0", 1, const Color(0xFF808080)),
+                          buildButton("00", 1, const Color(0xFF808080)),
                         ],
                       ),
                     ],

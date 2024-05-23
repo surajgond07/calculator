@@ -133,30 +133,24 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                       children: [
                         // unicode symbol
                         // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                        // buildButton("AC", 1, const Color(0xFFe62e00)),
-                        buildButton("AC", 1, const Color(0xFFcb4d02)),
-                        // buildButton("⌫", 1, Colors.blueGrey),
-                        buildButton("⌫", 1, const Color(0xFF3e5965)),
-                        // buildButton("÷", 1, Colors.blue),
-                        // buildButton("÷", 1, const Color(0xFF1f669f)),
-                        buildButton("MR", 1, const Color(0xFF1f669f)),
-                        // buildButton("÷", 1, const Color(0xFF6c949e)),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        // unicode symbol
-                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        //https://www.hotsymbol.com/symbol/arrow-pointing-downwards-then-curving-leftwards
 
-                        buildButton("M+", 1, const Color(0xFF1f669f)),
-                        buildButton("M+", 1, const Color(0xFF1f669f)),
-                        buildButton("MC", 1, const Color(0xFF1f669f)),
+                        buildButton("AC", 1, const Color(0xFF800000)),
+
+                        buildButton("⌫", 1, const Color(0xFF006600)),
+
+                        buildButton("MR", 1, const Color(0xFF195280)),
                       ],
                     ),
                     TableRow(
                       children: [
-                        // unicode symbol
-                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        buildButton("M+", 1, const Color(0xFF195280)),
+                        buildButton("M+", 1, const Color(0xFF195280)),
+                        buildButton("MC", 1, const Color(0xFF195280)),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
                         buildButton("7", 1, const Color(0xFF808080)),
                         buildButton("8", 1, const Color(0xFF808080)),
                         buildButton("9", 1, const Color(0xFF808080)),
@@ -164,8 +158,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                     ),
                     TableRow(
                       children: [
-                        // unicode symbol
-                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
                         buildButton("4", 1, const Color(0xFF808080)),
                         buildButton("5", 1, const Color(0xFF808080)),
                         buildButton("6", 1, const Color(0xFF808080)),
@@ -173,8 +165,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                     ),
                     TableRow(
                       children: [
-                        // unicode symbol
-                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
                         buildButton("1", 1, const Color(0xFF808080)),
                         buildButton("2", 1, const Color(0xFF808080)),
                         buildButton("3", 1, const Color(0xFF808080)),
@@ -182,11 +172,9 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                     ),
                     TableRow(
                       children: [
-                        // unicode symbol
-                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
                         buildButton("0", 1, const Color(0xFF808080)),
                         buildButton(".", 1, const Color(0xFF808080)),
-                        buildButton("%", 1, const Color(0xFF1f669f)),
+                        buildButton("%", 1, const Color(0xFF195280)),
                       ],
                     ),
                   ],
@@ -197,22 +185,19 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 child: Table(
                   children: [
                     TableRow(children: [
-                      buildButton("÷", 1, const Color(0xFF1f669f)),
+                      buildButton("÷", 1, const Color(0xFF195280)),
                     ]),
                     TableRow(children: [
-                      buildButton("×", 1, const Color(0xFF1f669f)),
+                      buildButton("×", 1, const Color(0xFF195280)),
                     ]),
                     TableRow(children: [
-                      buildButton("-", 1, const Color(0xFF1f669f)),
+                      buildButton("-", 1, const Color(0xFF195280)),
                     ]),
                     TableRow(children: [
-                      buildButton("+", 1, const Color(0xFF1f669f)),
+                      buildButton("+", 1, const Color(0xFF195280)),
                     ]),
                     TableRow(children: [
-                      //https://www.hotsymbol.com/symbol/arrow-pointing-downwards-then-curving-leftwards
-                      // buildButton("⁼⟋⤶", 2, const Color(0xFFbc622d)),
-                      buildButton("⁼⟋⤶", 2, const Color(0xFFcb4d02)),
-                      // buildButton("=", 2, Colors.redAccent),
+                      buildButton("⁼⟋⤶", 2, const Color(0xFF800000)),
                     ]),
                   ],
                 ),

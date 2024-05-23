@@ -30,7 +30,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   Widget buildButton(
       String buttonText, double buttonHeight, Color buttonColor) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1 * buttonHeight,
+      height: MediaQuery.of(context).size.height * 0.08 * buttonHeight,
       color: buttonColor,
       child: TextButton(
         style: ButtonStyle(
@@ -54,7 +54,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         child: Text(
           buttonText,
           style: const TextStyle(
-            fontSize: 30.0,
+            fontSize: 25.0,
             fontWeight: FontWeight.normal,
             color: Colors.white,
           ),
@@ -105,57 +105,92 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                  width: MediaQuery.of(context).size.width * .75,
-                  color: Colors.redAccent,
-                  child: Table(
-                    children: [
-                      TableRow(
-                        children: [
-                          // unicode symbol
-                          // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("C", 1, Colors.redAccent),
-                          buildButton("⌫", 1, Colors.blue),
-                          buildButton("÷", 1, Colors.blue),
-                        ],
-                      ),
-                      TableRow(
-                        children: [
-                          // unicode symbol
-                          // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("7", 1, const Color(0xFF808080)),
-                          buildButton("8", 1, const Color(0xFF808080)),
-                          buildButton("9", 1, const Color(0xFF808080)),
-                        ],
-                      ),
-                      TableRow(
-                        children: [
-                          // unicode symbol
-                          // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("4", 1, const Color(0xFF808080)),
-                          buildButton("5", 1, const Color(0xFF808080)),
-                          buildButton("6", 1, const Color(0xFF808080)),
-                        ],
-                      ),
-                      TableRow(
-                        children: [
-                          // unicode symbol
-                          // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton("1", 1, const Color(0xFF808080)),
-                          buildButton("2", 1, const Color(0xFF808080)),
-                          buildButton("3", 1, const Color(0xFF808080)),
-                        ],
-                      ),
-                      TableRow(
-                        children: [
-                          // unicode symbol
-                          // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                          buildButton(".", 1, const Color(0xFF808080)),
-                          buildButton("0", 1, const Color(0xFF808080)),
-                          buildButton("00", 1, const Color(0xFF808080)),
-                        ],
-                      ),
-                    ],
-                  )),
+                width: MediaQuery.of(context).size.width * .75,
+                color: Colors.redAccent,
+                child: Table(
+                  children: [
+                    TableRow(
+                      children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        buildButton("AC", 1, Colors.redAccent),
+                        buildButton("⌫", 1, Colors.blue),
+                        buildButton("÷", 1, Colors.blue),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+
+                        buildButton("M+", 1, Colors.blue),
+                        buildButton("M+", 1, Colors.blue),
+                        buildButton("MC", 1, Colors.blue),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        buildButton("7", 1, const Color(0xFF808080)),
+                        buildButton("8", 1, const Color(0xFF808080)),
+                        buildButton("9", 1, const Color(0xFF808080)),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        buildButton("4", 1, const Color(0xFF808080)),
+                        buildButton("5", 1, const Color(0xFF808080)),
+                        buildButton("6", 1, const Color(0xFF808080)),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        buildButton("1", 1, const Color(0xFF808080)),
+                        buildButton("2", 1, const Color(0xFF808080)),
+                        buildButton("3", 1, const Color(0xFF808080)),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        buildButton("0", 1, const Color(0xFF808080)),
+                        buildButton(".", 1, const Color(0xFF808080)),
+                        buildButton("%", 1, Colors.blue),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.25,
+                child: Table(
+                  children: [
+                    TableRow(children: [
+                      buildButton("MR", 1, Colors.blue),
+                    ]),
+                    TableRow(children: [
+                      buildButton("×", 1, Colors.blue),
+                    ]),
+                    TableRow(children: [
+                      buildButton("-", 1, Colors.blue),
+                    ]),
+                    TableRow(children: [
+                      buildButton("+", 1, Colors.blue),
+                    ]),
+                    TableRow(children: [
+                      //https://www.hotsymbol.com/symbol/arrow-pointing-downwards-then-curving-leftwards
+                      buildButton("⁼⟋⤶", 2, Colors.redAccent),
+                      // buildButton("=", 2, Colors.redAccent),
+                    ]),
+                  ],
+                ),
+              )
             ],
           )
         ],

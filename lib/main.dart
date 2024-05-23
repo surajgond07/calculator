@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const Calculator());
@@ -26,6 +27,25 @@ class SimpleCalculator extends StatefulWidget {
 }
 
 class _SimpleCalculatorState extends State<SimpleCalculator> {
+  // To lock the HomeScreen to portrait mode only
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
+  }
+
   // Method for Button
   Widget buildButton(
       String buttonText, double buttonHeight, Color buttonColor) {
@@ -74,7 +94,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFF1f669f),
       ),
       body: Column(
         children: [
@@ -113,9 +133,14 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                       children: [
                         // unicode symbol
                         // https://www.fileformat.info/info/unicode/category/Sm/list.htm
-                        buildButton("AC", 1, Colors.redAccent),
-                        buildButton("⌫", 1, Colors.blue),
-                        buildButton("÷", 1, Colors.blue),
+                        // buildButton("AC", 1, const Color(0xFFe62e00)),
+                        buildButton("AC", 1, const Color(0xFFcb4d02)),
+                        // buildButton("⌫", 1, Colors.blueGrey),
+                        buildButton("⌫", 1, const Color(0xFF3e5965)),
+                        // buildButton("÷", 1, Colors.blue),
+                        // buildButton("÷", 1, const Color(0xFF1f669f)),
+                        buildButton("MR", 1, const Color(0xFF1f669f)),
+                        // buildButton("÷", 1, const Color(0xFF6c949e)),
                       ],
                     ),
                     TableRow(
@@ -123,9 +148,9 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         // unicode symbol
                         // https://www.fileformat.info/info/unicode/category/Sm/list.htm
 
-                        buildButton("M+", 1, Colors.blue),
-                        buildButton("M+", 1, Colors.blue),
-                        buildButton("MC", 1, Colors.blue),
+                        buildButton("M+", 1, const Color(0xFF1f669f)),
+                        buildButton("M+", 1, const Color(0xFF1f669f)),
+                        buildButton("MC", 1, const Color(0xFF1f669f)),
                       ],
                     ),
                     TableRow(
@@ -161,7 +186,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         // https://www.fileformat.info/info/unicode/category/Sm/list.htm
                         buildButton("0", 1, const Color(0xFF808080)),
                         buildButton(".", 1, const Color(0xFF808080)),
-                        buildButton("%", 1, Colors.blue),
+                        buildButton("%", 1, const Color(0xFF1f669f)),
                       ],
                     ),
                   ],
@@ -172,20 +197,21 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 child: Table(
                   children: [
                     TableRow(children: [
-                      buildButton("MR", 1, Colors.blue),
+                      buildButton("÷", 1, const Color(0xFF1f669f)),
                     ]),
                     TableRow(children: [
-                      buildButton("×", 1, Colors.blue),
+                      buildButton("×", 1, const Color(0xFF1f669f)),
                     ]),
                     TableRow(children: [
-                      buildButton("-", 1, Colors.blue),
+                      buildButton("-", 1, const Color(0xFF1f669f)),
                     ]),
                     TableRow(children: [
-                      buildButton("+", 1, Colors.blue),
+                      buildButton("+", 1, const Color(0xFF1f669f)),
                     ]),
                     TableRow(children: [
                       //https://www.hotsymbol.com/symbol/arrow-pointing-downwards-then-curving-leftwards
-                      buildButton("⁼⟋⤶", 2, Colors.redAccent),
+                      // buildButton("⁼⟋⤶", 2, const Color(0xFFbc622d)),
+                      buildButton("⁼⟋⤶", 2, const Color(0xFFcb4d02)),
                       // buildButton("=", 2, Colors.redAccent),
                     ]),
                   ],

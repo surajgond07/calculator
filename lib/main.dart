@@ -62,7 +62,12 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           equation = '0';
           result = '0';
         } else if (buttonText == '⌫') {
-          equation = equation.substring(0, equation.length - 1);
+          if (equation.isNotEmpty && equation != '0') {
+            equation = equation.substring(0, equation.length - 1);
+            if (equation.isEmpty) {
+              equation = '0';
+            }
+          }
         } else if (buttonText == '=') {
         } else {
           if (equation == '0') {
@@ -84,7 +89,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               borderRadius: BorderRadius.circular(0.0),
               side: const BorderSide(
                 color: Colors.white,
-                width: 1,
+                width: 0.4,
                 style: BorderStyle.solid,
               ),
             ),

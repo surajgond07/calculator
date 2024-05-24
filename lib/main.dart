@@ -46,9 +46,34 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
     super.dispose();
   }
 
+  String equation = '0';
+  String result = '0';
+  String expression = '';
+  double equationFontSize = 38.0;
+  double resultFontSize = 48.0;
+
   // Method for Button
   Widget buildButton(
       String buttonText, double buttonHeight, Color buttonColor) {
+    // onPresse method
+    buttonPressed(String button) {
+      setState(() {
+        if (buttonText == 'AC') {
+          equation = '0';
+          result = '0';
+        } else if (buttonText == '⌫') {
+          equation = equation.substring(0, equation.length - 1);
+        } else if (buttonText == '=') {
+        } else {
+          if (equation == '0') {
+            equation = buttonText;
+          } else {
+            equation = equation + buttonText;
+          }
+        }
+      });
+    }
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.08 * buttonHeight,
       color: buttonColor,
@@ -70,6 +95,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         ),
         onPressed: () {
           // on press logic
+          buttonPressed(buttonText);
         },
         child: Text(
           buttonText,
@@ -98,23 +124,25 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
       ),
       body: Column(
         children: [
+          // Equation container
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-            child: const Text(
-              '0',
+            child: Text(
+              equation,
               style: TextStyle(
-                fontSize: 38.0,
+                fontSize: equationFontSize,
               ),
             ),
           ),
+          // Result Container
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
-            child: const Text(
-              '0',
+            child: Text(
+              result,
               style: TextStyle(
-                fontSize: 48.0,
+                fontSize: resultFontSize,
               ),
             ),
           ),

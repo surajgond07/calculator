@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const Calculator());
@@ -61,7 +62,11 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         if (buttonText == 'AC') {
           equation = '0';
           result = '0';
+          equationFontSize = 38.0;
+          resultFontSize = 48.0;
         } else if (buttonText == '⌫') {
+          equationFontSize = 48.0;
+          resultFontSize = 38.0;
           if (equation.isNotEmpty && equation != '0') {
             equation = equation.substring(0, equation.length - 1);
             if (equation.isEmpty) {
@@ -69,7 +74,25 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
             }
           }
         } else if (buttonText == '=') {
+          equationFontSize = 38.0;
+          resultFontSize = 48.0;
+
+          expression = equation;
+          expression = expression.replaceAll('×', '*');
+          expression = expression.replaceAll('÷', '/');
+
+          try {
+            Parser p = Parser();
+            Expression exp = p.parse(expression);
+
+            ContextModel cm = ContextModel();
+            result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+          } catch (e) {
+            result = 'Error';
+          }
         } else {
+          equationFontSize = 48.0;
+          resultFontSize = 38.0;
           if (equation == '0') {
             equation = buttonText;
           } else {
@@ -213,7 +236,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.25,
                 child: Table(
                   children: [
@@ -230,7 +253,8 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                       buildButton("+", 1, const Color(0xFF195280)),
                     ]),
                     TableRow(children: [
-                      buildButton("⁼⟋⤶", 2, const Color(0xFF800000)),
+                      // buildButton("⁼⟋⤶", 2, const Color(0xFF800000)),
+                      buildButton("=", 2, const Color(0xFF800000)),
                     ]),
                   ],
                 ),

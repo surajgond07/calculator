@@ -49,6 +49,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
 
   String equation = '0';
   String result = '0';
+  String finalResult = '0';
   String expression = '';
   double equationFontSize = 38.0;
   double resultFontSize = 48.0;
@@ -57,8 +58,9 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   double memory = 0.0;
 
   // Method for Button
-  Widget buildButton(
-      String buttonText, double buttonHeight, Color buttonColor) {
+  Widget buildButton(String buttonText, double buttonHeight, Color bgColor,
+      Color buttonColor) {
+    // var buttonColor = Colors.white;
     // onPresse method
     buttonPressed(String button) {
       setState(() {
@@ -83,6 +85,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           expression = equation;
           expression = expression.replaceAll('×', '*');
           expression = expression.replaceAll('÷', '/');
+          expression = expression.replaceAll('%', '/ 100');
 
           try {
             Parser p = Parser();
@@ -90,10 +93,12 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
 
             ContextModel cm = ContextModel();
             result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+            finalResult = result;
+            // Clear the equation after evaluation
+            equation = finalResult; // or equation = "0";
           } catch (e) {
             result = 'Error';
           }
-
           // Add Memory storage function
         } else if (buttonText == 'MR') {
           equationFontSize = 38.0;
@@ -111,15 +116,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           equationFontSize = 38.0;
           resultFontSize = 48.0;
           memory = 0.0;
-        } else if (buttonText == '%') {
-          equationFontSize = 38.0;
-          resultFontSize = 48.0;
-          try {
-            double currentValue = double.parse(result);
-            result = (currentValue / 100).toString();
-          } catch (e) {
-            result = 'Error';
-          }
         } else {
           equationFontSize = 48.0;
           resultFontSize = 38.0;
@@ -134,14 +130,15 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.08 * buttonHeight,
-      color: buttonColor,
+      color: bgColor,
       child: TextButton(
         style: ButtonStyle(
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0.0),
               side: const BorderSide(
-                color: Colors.white,
+                // Button Border Color
+                color: Colors.black,
                 width: 0.4,
                 style: BorderStyle.solid,
               ),
@@ -157,10 +154,10 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         },
         child: Text(
           buttonText,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 25.0,
             fontWeight: FontWeight.normal,
-            color: Colors.white,
+            color: buttonColor,
           ),
         ),
       ),
@@ -221,46 +218,136 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         // https://www.fileformat.info/info/unicode/category/Sm/list.htm
                         //https://www.hotsymbol.com/symbol/arrow-pointing-downwards-then-curving-leftwards
 
-                        buildButton("AC", 1, const Color(0xFF800000)),
+                        buildButton(
+                          "AC",
+                          1,
+                          const Color(0xFF800000),
+                          const Color(0xFFFFFFFF),
+                        ),
 
-                        buildButton("⌫", 1, const Color(0xFF006600)),
+                        buildButton(
+                          "⌫",
+                          1,
+                          const Color(0xFF006600),
+                          const Color(0xFFFFFFFF),
+                        ),
 
-                        buildButton("MR", 1, const Color(0xFF195280)),
+                        buildButton(
+                          "MR",
+                          1,
+                          const Color(0xFF195280),
+                          const Color(0xFFcccccc),
+                        ),
                       ],
                     ),
                     TableRow(
                       children: [
-                        buildButton("M+", 1, const Color(0xFF195280)),
-                        buildButton("M-", 1, const Color(0xFF195280)),
-                        buildButton("MC", 1, const Color(0xFF195280)),
+                        buildButton(
+                          "M+",
+                          1,
+                          const Color(0xFF195280),
+                          const Color(0xFFb3b3b3),
+                        ),
+                        buildButton(
+                          "M-",
+                          1,
+                          const Color(0xFF195280),
+                          const Color(0xFF808080),
+                        ),
+                        buildButton(
+                          "MC",
+                          1,
+                          const Color(0xFF195280),
+                          const Color(0xFFcccccc),
+                        ),
                       ],
                     ),
                     TableRow(
                       children: [
-                        buildButton("7", 1, const Color(0xFF808080)),
-                        buildButton("8", 1, const Color(0xFF808080)),
-                        buildButton("9", 1, const Color(0xFF808080)),
+                        buildButton(
+                          "7",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "8",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "9",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
                       ],
                     ),
                     TableRow(
                       children: [
-                        buildButton("4", 1, const Color(0xFF808080)),
-                        buildButton("5", 1, const Color(0xFF808080)),
-                        buildButton("6", 1, const Color(0xFF808080)),
+                        buildButton(
+                          "4",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "5",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "6",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
                       ],
                     ),
                     TableRow(
                       children: [
-                        buildButton("1", 1, const Color(0xFF808080)),
-                        buildButton("2", 1, const Color(0xFF808080)),
-                        buildButton("3", 1, const Color(0xFF808080)),
+                        buildButton(
+                          "1",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "2",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "3",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
                       ],
                     ),
                     TableRow(
                       children: [
-                        buildButton("0", 1, const Color(0xFF808080)),
-                        buildButton(".", 1, const Color(0xFF808080)),
-                        buildButton("%", 1, const Color(0xFF195280)),
+                        buildButton(
+                          "0",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          ".",
+                          1,
+                          const Color(0xE6E6E6E6),
+                          const Color(0xFF000000),
+                        ),
+                        buildButton(
+                          "%",
+                          1,
+                          const Color(0xFF195280),
+                          const Color(0xFFcccccc),
+                        ),
                       ],
                     ),
                   ],
@@ -271,20 +358,45 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 child: Table(
                   children: [
                     TableRow(children: [
-                      buildButton("÷", 1, const Color(0xFF195280)),
+                      buildButton(
+                        "÷",
+                        1,
+                        const Color(0xFF195280),
+                        const Color(0xFFbfbfbf),
+                      ),
                     ]),
                     TableRow(children: [
-                      buildButton("×", 1, const Color(0xFF195280)),
+                      buildButton(
+                        "×",
+                        1,
+                        const Color(0xFF195280),
+                        const Color(0xFF999999),
+                      ),
                     ]),
                     TableRow(children: [
-                      buildButton("-", 1, const Color(0xFF195280)),
+                      buildButton(
+                        "-",
+                        1,
+                        const Color(0xFF195280),
+                        const Color(0xFFbfbfbf),
+                      ),
                     ]),
                     TableRow(children: [
-                      buildButton("+", 1, const Color(0xFF195280)),
+                      buildButton(
+                        "+",
+                        1,
+                        const Color(0xFF195280),
+                        const Color(0xFF000000),
+                      ),
                     ]),
                     TableRow(children: [
-                      // buildButton("⁼⟋⤶", 2, const Color(0xFF800000)),
-                      buildButton("=", 2, const Color(0xFF800000)),
+                      // buildButton("⁼⟋⤶", 2, const Color(0xFF800000), const Color(0xFFFFFFFF),),
+                      buildButton(
+                        "=",
+                        2,
+                        const Color(0xFF800000),
+                        const Color(0xFFFFFFFF),
+                      ),
                     ]),
                   ],
                 ),

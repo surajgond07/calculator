@@ -28,6 +28,7 @@ class SimpleCalculator extends StatefulWidget {
 }
 
 class _SimpleCalculatorState extends State<SimpleCalculator> {
+  // To lock the HomeScreen to portrait mode only
   @override
   void initState() {
     super.initState();
@@ -52,7 +53,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   double equationFontSize = 38.0;
   double resultFontSize = 48.0;
 
-  // Memory storage
+  // Memory Storage
   double memory = 0.0;
 
   // Method for Button
@@ -113,12 +114,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         } else if (buttonText == '%') {
           equationFontSize = 38.0;
           resultFontSize = 48.0;
-          try {
-            double currentValue = double.parse(result);
-            result = (currentValue / 100).toString();
-          } catch (e) {
-            result = 'Error';
-          }
         } else {
           equationFontSize = 48.0;
           resultFontSize = 38.0;
@@ -181,7 +176,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
       ),
       body: Column(
         children: [
-          // Equation container
+          // Output Equation container
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
@@ -216,8 +211,14 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                   children: [
                     TableRow(
                       children: [
+                        // unicode symbol
+                        // https://www.fileformat.info/info/unicode/category/Sm/list.htm
+                        //https://www.hotsymbol.com/symbol/arrow-pointing-downwards-then-curving-leftwards
+
                         buildButton("AC", 1, const Color(0xFF800000)),
+
                         buildButton("⌫", 1, const Color(0xFF006600)),
+
                         buildButton("MR", 1, const Color(0xFF195280)),
                       ],
                     ),
@@ -276,6 +277,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                       buildButton("+", 1, const Color(0xFF195280)),
                     ]),
                     TableRow(children: [
+                      // buildButton("⁼⟋⤶", 2, const Color(0xFF800000)),
                       buildButton("=", 2, const Color(0xFF800000)),
                     ]),
                   ],

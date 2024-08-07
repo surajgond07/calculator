@@ -201,8 +201,19 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               ),
             ),
           ),
+
           const Expanded(
             child: Divider(),
+          ),
+          Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
+            child: Text(
+              result,
+              style: const TextStyle(
+                fontSize: 25.0,
+              ),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -246,13 +257,13 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                           "M+",
                           1,
                           const Color(0xFF195280),
-                          const Color(0xFFb3b3b3),
+                          const Color(0xFFcccccc),
                         ),
                         buildButton(
                           "M-",
                           1,
                           const Color(0xFF195280),
-                          const Color(0xFF808080),
+                          const Color(0xFFcccccc),
                         ),
                         buildButton(
                           "MC",
@@ -362,7 +373,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         "÷",
                         1,
                         const Color(0xFF195280),
-                        const Color(0xFFbfbfbf),
+                        const Color(0xFFcccccc),
                       ),
                     ]),
                     TableRow(children: [
@@ -370,7 +381,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         "×",
                         1,
                         const Color(0xFF195280),
-                        const Color(0xFF999999),
+                        const Color(0xFFcccccc),
                       ),
                     ]),
                     TableRow(children: [
@@ -378,7 +389,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         "-",
                         1,
                         const Color(0xFF195280),
-                        const Color(0xFFbfbfbf),
+                        const Color(0xFFcccccc),
                       ),
                     ]),
                     TableRow(children: [
@@ -386,7 +397,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                         "+",
                         1,
                         const Color(0xFF195280),
-                        const Color(0xFF000000),
+                        const Color(0xFFcccccc),
                       ),
                     ]),
                     TableRow(children: [

@@ -136,7 +136,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
       color: bgColor,
       child: TextButton(
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0.0),
               side: const BorderSide(
@@ -146,7 +146,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               ),
             ),
           ),
-          padding: MaterialStateProperty.all<EdgeInsets>(
+          padding: WidgetStateProperty.all<EdgeInsets>(
             const EdgeInsets.all(16.0),
           ),
         ),
